@@ -1,0 +1,19 @@
+{
+    "name": "dell/crud",
+    "description": "login and crud with php, js and mysql",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dell\\Crud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Renz17",
+            "email": "ajrey1282@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {}
+}
