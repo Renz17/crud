@@ -15,5 +15,7 @@
         }
     ],
     "minimum-stability": "beta",
-    "require": {}
+    "require": {
+        "polarising/bcrypt": "^1.0"
+    }
 }

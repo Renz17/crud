@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6; /* Fondo gris claro */
+}
+.container {
+    text-align: center; /* Alinea el contenido al centro */
+}
+h2 {
+    text-align: center; /* Alinea el texto al centro */
+    margin-bottom: 50px; /* Espacio entre el título y el formulario */
+}
+
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ancho del formulario */
+    margin: 0 auto; /* Centrar horizontalmente */
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+    }
+}

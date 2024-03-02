@@ -1,9 +1,9 @@
 <?php
-include "config/db_conn.php";
+include "../config/db_conn.php";
 session_start();
 
-// Verificar si el usuario está autenticado y tiene el rol de usuario
-if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 3) {
+// Verificar si el usuario está autenticado y tiene el rol de administrador
+if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
     header("Location: login.php");
     exit;
 }
@@ -23,13 +23,20 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 3) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>User</title>
+  <title>ADMIN</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-    Application for users
-  </nav>
+  <nav class="navbar navbar-light justify-content-between" style="background-color: #00ff5573;">
+  <div class="container-fluid">
+    <span class="navbar-brand fs-3">Application for admins</span>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <div class="container">
     <?php
@@ -41,6 +48,7 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 3) {
     </div>';
     }
     ?>
+    <a href="add-new.php" class="btn btn-dark mb-3">Add New</a>
 
     <table class="table table-hover text-center">
       <thead class="table-dark">
@@ -51,6 +59,7 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 3) {
           <th scope="col">Usuario</th>
           <th scope="col">Rol</th>
           <th scope="col">Proyecto</th>
+          <th scope="col">Acción</th>
         </tr>
       </thead>
       <tbody>
@@ -68,6 +77,10 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 3) {
             <td><?php echo $row["usuario"] ?></td>
             <td><?php echo $row["rol"] ?></td>
             <td><?php echo $row["proyecto"] ?></td>
+            <td>
+              <a href="./controllers/edit.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a href="delete.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+            </td>
           </tr>
         <?php
         }

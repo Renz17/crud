@@ -1,11 +1,15 @@
 <?php
-include "config/db_conn.php";
+include "../config/db_conn.php";
+// Include the Composer autoload.php file
+require '../vendor/autoload.php';
 
-// Consulta SQL para obtener los roles
+use Bcrypt\Bcrypt;
+
+// SQL query to retrieve roles
 $sql_roles = "SELECT id_rol, nombre FROM rol";
 $resultado_roles = mysqli_query($conn, $sql_roles);
 
-// Consulta SQL para obtener los proyectos
+// SQL query to retrieve projects
 $sql_proyectos = "SELECT idproyecto, nombre FROM Proyecto";
 $resultado_proyectos = mysqli_query($conn, $sql_proyectos);
 
@@ -17,9 +21,15 @@ if (isset($_POST["submit"])) {
    $id_rol = $_POST['rol'];
    $id_proyecto = $_POST['proyecto'];
 
-   // Aquí deberías aplicar medidas de seguridad como el hash de contraseña antes de almacenarla en la base de datos
+   // Create an instance of the Bcrypt class
+   $bcrypt = new Bcrypt();
 
-   $sql = "INSERT INTO Empleado (nombre, apellido, usuario, contraseña, id_rol, id_proyecto) VALUES ('$nombre', '$apellido', '$usuario', '$contraseña', '$id_rol', '$id_proyecto')";
+   // Apply Bcrypt to encrypt the password
+   $encrypted_password = $bcrypt->encrypt($contraseña);
+
+   // Here you should apply security measures such as password hashing before storing it in the database
+
+   $sql = "INSERT INTO Empleado (nombre, apellido, usuario, contraseña, id_rol, id_proyecto) VALUES ('$nombre', '$apellido', '$usuario', '$encrypted_password', '$id_rol', '$id_proyecto')";
 
    $result = mysqli_query($conn, $sql);
 
@@ -30,8 +40,6 @@ if (isset($_POST["submit"])) {
    }
 }
 ?>
-
-
 
 
 
@@ -92,7 +100,7 @@ if (isset($_POST["submit"])) {
                 <label class="form-label">Rol:</label>
                 <select class="form-select" name="rol">
                 <?php
-                     // Generar opciones para los roles
+                     // Generate options for roles
                      while ($row = mysqli_fetch_assoc($resultado_roles)) {
                         echo "<option value='" . $row['id_rol'] . "'>" . $row['nombre'] . "</option>";
                      }
@@ -104,7 +112,7 @@ if (isset($_POST["submit"])) {
                 <label class="form-label">Proyecto:</label>
                 <select class="form-select" name="proyecto">
                 <?php
-                     // Generar opciones para los proyectos
+                     // Generate options for projects
                      while ($row = mysqli_fetch_assoc($resultado_proyectos)) {
                         echo "<option value='" . $row['idproyecto'] . "'>" . $row['nombre'] . "</option>";
                      }

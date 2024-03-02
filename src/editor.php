@@ -1,12 +1,13 @@
 <?php
-include "config/db_conn.php";
+include "../config/db_conn.php";
 session_start();
 
-// Verificar si el usuario está autenticado y tiene el rol de administrador
-if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
+// Verificar si el usuario está autenticado y tiene el rol de editor
+if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 2) {
     header("Location: login.php");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +24,13 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>ADMIN</title>
+  <title>Editor</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-between" style="background-color: #00ff5573;">
+<nav class="navbar navbar-light justify-content-between" style="background-color: #00ff5573;">
   <div class="container-fluid">
-    <span class="navbar-brand fs-3">Application for admins</span>
+    <span class="navbar-brand fs-3">Application for editores</span>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
@@ -79,7 +80,6 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
             <td><?php echo $row["proyecto"] ?></td>
             <td>
               <a href="edit.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-              <a href="delete.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
             </td>
           </tr>
         <?php

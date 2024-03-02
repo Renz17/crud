@@ -1,5 +1,5 @@
 <?php
-include "config/db_conn.php";
+include "../../config/db_conn.php";
 
 if (isset($_POST["login"])) {
     $username = $_POST['username'];
@@ -19,13 +19,13 @@ if (isset($_POST["login"])) {
         // Redireccionar según el rol del usuario
         switch ($row['id_rol']) {
             case 1: // Admin
-                header("Location: admin.php");
+                header("Location: ../admin.php");
                 break;
             case 2: // Editor
-                header("Location: editor.php");
+                header("Location: ../editor.php");
                 break;
             case 3: // User
-                header("Location: user.php");
+                header("Location: ../user.php");
                 break;
             default: // Si el rol no está definido
                 echo "Rol no reconocido";

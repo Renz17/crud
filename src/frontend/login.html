@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <div id="error-message" style="color: red;"></div> <!-- Elemento para mostrar el mensaje de error -->
+        <form id="login-form" action="../controllers/login_check.php" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+    <script src="login.js"></script> <!-- Incluir tu archivo JavaScript -->
+</body>
+</html>

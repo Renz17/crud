@@ -11,12 +11,20 @@ class ComposerStaticInit3f594f4b5c9d63e7823182de6ac2c225
         array (
             'Dell\\Crud\\' => 10,
         ),
+        'B' => 
+        array (
+            'Bcrypt\\' => 7,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Dell\\Crud\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Bcrypt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/polarising/bcrypt/src',
         ),
     );
 

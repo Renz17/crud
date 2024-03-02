@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Dell\\Crud\\' => array($baseDir . '/src'),
+    'Bcrypt\\' => array($vendorDir . '/polarising/bcrypt/src'),
 );
