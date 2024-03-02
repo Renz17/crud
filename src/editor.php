@@ -79,7 +79,7 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 2) {
             <td><?php echo $row["rol"] ?></td>
             <td><?php echo $row["proyecto"] ?></td>
             <td>
-              <a href="edit.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a href="./editUser.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
             </td>
           </tr>
         <?php

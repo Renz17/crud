@@ -48,7 +48,7 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
     </div>';
     }
     ?>
-    <a href="add-new.php" class="btn btn-dark mb-3">Add New</a>
+    <a href="newUser.php" class="btn btn-dark mb-3">Add New</a>
 
     <table class="table table-hover text-center">
       <thead class="table-dark">
@@ -78,8 +78,8 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
             <td><?php echo $row["rol"] ?></td>
             <td><?php echo $row["proyecto"] ?></td>
             <td>
-              <a href="./controllers/edit.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-              <a href="delete.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+              <a href="./editUser.php?id=<?php echo $row["id_empleado"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a href="#" class="link-dark delete-record" data-id="<?php echo $row["id_empleado"] ?>"><i class="fa-solid fa-trash fs-5"></i></a>
             </td>
           </tr>
         <?php
@@ -88,9 +88,30 @@ if (!isset($_SESSION['id_empleado']) || $_SESSION['id_rol'] != 1) {
       </tbody>
     </table>
   </div>
+ <!-- Modal de confirmación de eliminación -->
+ <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas eliminar este registro?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a id="confirmDeleteButton" href="#" class="btn btn-danger">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script JavaScript -->
+  <script src="./frontend//js/adminModal.js"></script>
 
 </body>
 
