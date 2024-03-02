@@ -33,16 +33,21 @@ composer install
 
 ```
 
-## importar base de datos
-Para que la aplicacion funcione debes tener en phpmyadmin una base de datos 
-llamada ``projects`` 
+## import database 
 
-e importar el script sql que esta en la carpeta database 
+To make the application work, you need to have a database named `projects` in phpMyAdmin.
 
-y poner el siguiente enlace que es el que nos va a llevar al inicio de la aplacion 
+Import the SQL script located in the `database` folder.
+
+Then, add the following link, which will take us to the application's homepage.
 
 `http://localhost/crud/index.php`
 
+## user login and pass 
+
+`renz` 
+
+`1282`
 
 ## collaborators
 <img src="https://github.com/Renz17/Images/blob/main/img/PXL_20220928_212013084_polarr.jpg" width="128"/>
